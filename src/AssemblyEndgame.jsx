@@ -1,9 +1,24 @@
 import { useState } from "react"
 import Language from "./components/Language"
 import AlphabetLetter from "./components/AlphabetLetter"
-import {languages} from "./languages"
+import { languages } from "./languages"
 
 function AssemblyEndgame() {
+	const [currentWord, setCurrentWord] = useState("react")
+
+	const alphabet = "abcdefghijklmnopqrstuvwxyz"
+	const alphabetLetters = alphabet.toUpperCase().split("").map((letter, index)=>{
+		return <AlphabetLetter letter={letter}/>
+	})
+
+	const letterElements = currentWord
+		.toLocaleUpperCase()
+		.split("")
+		.map((letter, index) => {
+			return <span key={index}>{letter}</span>
+		})
+
+
 	const languageElements = languages.map((language, index) => {
 		return (
 			<Language
@@ -28,13 +43,7 @@ function AssemblyEndgame() {
 				<p>Well done</p>
 			</section>
 			<section className="languages-container">{languageElements} </section>
-			<section className="letters-container">
-				<div>1</div>
-				<div>2</div>
-				<div>3</div>
-				<div>4</div>
-				<div>5</div>
-			</section>
+			<section className="letters-container">{letterElements}</section>
 			<section>
 				<AlphabetLetter />
 				<span>* 26 Repeat</span>

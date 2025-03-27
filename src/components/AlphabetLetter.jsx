@@ -1,6 +1,6 @@
-function AlphabetLetter() {
+function AlphabetLetter(props) {
     return ( 
-        <button className="letter">A</button>
+        <button>{props.letter}</button>
      );
 }
 
