@@ -1,0 +1,47 @@
+  Project planning:
+  
+  Questions to ask yourself before writing any code:
+  
+  ------------ What are the main containers of elements I need
+    in this app?
+    - main overall container for the game
+    - h1 for the tiltle
+    - p for description of game
+
+    -array of languages 
+   - div languages container
+    - buttons component rendered based on laguages array
+    - 
+
+    - 5 text inputs
+    - probably a component distributed 5 times
+    -im not sure if this is input or just a div or span designed with grid 5 columns
+    -
+
+    -array of 26 alphabet characters 
+    -alphabet letter component rendered based on alphabet array
+  
+  ---------- What values will need to be saved in state vs.
+    what values can be derived from the state?
+  
+    save state input textboxes values
+    derived state: languages
+    derived state: the alphabet letters
+
+  
+  ------------- How will the user interact with the app? What
+    events do I need to handle?
+    2. onclick
+            > check if clicked letter is part of hidden word
+                > if no then mark red and loose 1 language by disabling(opacity) and mark with skull and display RIP the current lost language name
+                > if letter Is part of hidden word then display letter in the right square(s)(if appear more than nonce) change key color to green
+                > keyboard keus
+
+    gameWon variable 
+        > if game is won then show new game buttons and display you win message on statusboard
+    onClick event   > when new game button is pressed reset all game
+        > keep state of count for failed clicked letters.. maximun of 8 attemps
+    
+note: the game will select random words
+        > probably use math.random() to select a random index from provided array of words
+
