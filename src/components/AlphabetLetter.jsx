@@ -1,7 +1,7 @@
 function AlphabetLetter(props) {
     return ( 
-        <button>{props.letter}</button>
-     );
+        <button onClick={()=>{props.addGuessedLetter(props.letter)}}>{props.letter}</button>
+     )
 }
 
 export default AlphabetLetter;

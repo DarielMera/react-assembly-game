@@ -5,10 +5,19 @@ import { languages } from "./languages"
 
 function AssemblyEndgame() {
 	const [currentWord, setCurrentWord] = useState("react")
+	const [guessedLetters, setGuessedLetters] = useState([])
+
+	function addGuessedLetter(pressedLetter){
+		setGuessedLetters((prevGuessLetter) => 
+		prevGuessLetter.includes(pressedLetter) ? prevGuessLetter :	[...prevGuessLetter, pressedLetter]
+	)
+	}
+
+console.log(guessedLetters);
 
 	const alphabet = "abcdefghijklmnopqrstuvwxyz"
-	const alphabetLetters = alphabet.toUpperCase().split("").map((letter, index)=>{
-		return <AlphabetLetter letter={letter}/>
+	const keyboardElements = alphabet.toUpperCase().split("").map((letter, index)=>{
+		return <AlphabetLetter key={letter} letter={letter} addGuessedLetter={addGuessedLetter}/>
 	})
 
 	const letterElements = currentWord
@@ -19,7 +28,7 @@ function AssemblyEndgame() {
 		})
 
 
-	const languageElements = languages.map((language, index) => {
+	const languageElements = languages.map((language) => {
 		return (
 			<Language
 				key={language.name}
@@ -44,11 +53,10 @@ function AssemblyEndgame() {
 			</section>
 			<section className="languages-container">{languageElements} </section>
 			<section className="letters-container">{letterElements}</section>
-			<section>
-				<AlphabetLetter />
-				<span>* 26 Repeat</span>
+			<section className="keyboard">
+				{keyboardElements}
 			</section>
-			<button className="newgame-btn">!New Game</button>
+			<button className="new-game-btn">New Game</button>
 		</main>
 	)
 }
