@@ -28,7 +28,9 @@ function AssemblyEndgame() {
 	})
 
 	const letterElements = currentWord.split("").map((letter, index) => {
-		return <span key={index}>{letter.toLocaleUpperCase()}</span>
+		return (
+			<span key={index}>{guessedLetters.includes(letter) ? letter.toLocaleUpperCase() : ""}</span>
+		)
 	})
 
 	const keyboardElements = alphabet.split("").map(letter => {

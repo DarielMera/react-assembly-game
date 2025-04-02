@@ -87,6 +87,7 @@ section.letters-container > span {
 	border-bottom: 1px solid #f9f4da;
 }
 
+
 section.keyboard {
 	display: flex;
 	flex-wrap: wrap;
@@ -98,7 +99,7 @@ section.keyboard {
 section.keyboard > button {
 	height: 35px;
 	width: 35px;
-    background-color: #FCBA29;
+	background-color: #fcba29;
 	border: 1px solid #d7d7d7;
 	border-radius: 3px;
 	cursor: pointer;
