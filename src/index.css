@@ -27,8 +27,8 @@ header > p {
 	font-size: 0.875rem;
 	margin: auto;
 	max-width: 350px;
-    color: #8e8e8e;
-    letter-spacing: 1px;
+	color: #8e8e8e;
+	letter-spacing: 1px;
 }
 
 section.game-status {
@@ -56,8 +56,8 @@ section.language-chips {
 	gap: 4px;
 	justify-content: center;
 	max-width: 350px;
-    margin-bottom: 36px;
-    margin: auto;
+	margin-bottom: 36px;
+	margin: auto;
 }
 
 section > .chip {
@@ -65,70 +65,75 @@ section > .chip {
 	padding: 5px;
 	border-radius: 4px;
 	margin: 2px;
-    font-size: 1em;
-    font-weight: 100;
+	font-size: 1em;
+	font-weight: 100;
 }
 
 section.letters-container {
-    display: flex;
-    justify-content: center;
-    gap: 2px;
-    margin-block: 20px;
+	display: flex;
+	justify-content: center;
+	gap: 2px;
+	margin-block: 20px;
 }
 
-section.letters-container > span{
-    height: 40px;
-    width: 40px;
-    background-color: #323232;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.125rem;
-    border-bottom: 1px solid #f9F4DA;
-
+section.letters-container > span {
+	height: 40px;
+	width: 40px;
+	background-color: #323232;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.125rem;
+	border-bottom: 1px solid #f9f4da;
 }
 
 section.keyboard {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    justify-content: center;
-    max-width: 450px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	justify-content: center;
+	max-width: 450px;
 }
 
 section.keyboard > button {
-    height: 35px;
-    width: 35px;
-    border: 1px solid #D7D7D7;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-.base-color-letter{
+	height: 35px;
+	width: 35px;
     background-color: #FCBA29;
+	border: 1px solid #d7d7d7;
+	border-radius: 3px;
+	cursor: pointer;
 }
 
-.found-letter{
-    background-color: green;
+section.keyboard > button.correct {
+	background-color: #10a95b;
 }
 
-.not-found-letter{
-    background-color: red;
+section.keyboard > button.wrong {
+	background-color: #ec5d49;
+}
+
+.base-color-letter {
+	background-color: #fcba29;
+}
+
+.found-letter {
+	background-color: green;
+}
+
+.not-found-letter {
+	background-color: red;
 }
 
 button.new-game-btn {
-    background-color: #11B5E5;
-    border: 1px solid #D7D7D7;
-    border-radius: 4px;
-    width: 225px;
-    height: 40px;
-    padding: 6px 12px;
-    display: block;
-    margin-inline: auto;
-    margin-block: 30px;
-    cursor: pointer;
-    font-size: 1.2em;
-
+	background-color: #11b5e5;
+	border: 1px solid #d7d7d7;
+	border-radius: 4px;
+	width: 225px;
+	height: 40px;
+	padding: 6px 12px;
+	display: block;
+	margin-inline: auto;
+	margin-block: 30px;
+	cursor: pointer;
+	font-size: 1.2em;
 }
-
-

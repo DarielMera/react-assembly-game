@@ -5,7 +5,7 @@ import clsx from "clsx"
 function AssemblyEndgame() {
 	const [currentWord, setCurrentWord] = useState("react")
 	const [guessedLetters, setGuessedLetters] = useState([])
-	console.log(guessedLetters);
+	console.log(guessedLetters)
 
 	const alphabet = "abcdefghijklmnopqrstuvwxyz"
 
@@ -15,18 +15,13 @@ function AssemblyEndgame() {
 		)
 	}
 
-
 	const languageElements = languages.map(language => {
 		const styles = {
 			backgroundColor: language.backgroundColor,
-			color: language.color
+			color: language.color,
 		}
 		return (
-			<span
-				className="chip"
-				key={language.name}
-				style={styles}
-			>
+			<span className="chip" key={language.name} style={styles}>
 				{language.name}
 			</span>
 		)
@@ -36,13 +31,19 @@ function AssemblyEndgame() {
 		return <span key={index}>{letter.toLocaleUpperCase()}</span>
 	})
 
-
 	const keyboardElements = alphabet.split("").map(letter => {
+		const isGuessed = guessedLetters.includes(letter)
+		const isCorrect = isGuessed && currentWord.includes(letter)
+		const isWrong = isGuessed && !currentWord.includes(letter)
+		const className = clsx({
+			correct: isCorrect,
+			wrong: isWrong,
+		})
+
+		console.log(className)
+
 		return (
-			<button
-				key={letter}
-				onClick={()=>addGuessedLetter(letter)}
-			>
+			<button className={className} key={letter} onClick={() => addGuessedLetter(letter)}>
 				{letter.toUpperCase()}
 			</button>
 		)
