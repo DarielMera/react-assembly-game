@@ -50,22 +50,23 @@ section.game-status > h2 {
 	margin: 5px;
 }
 
-section.languages-container {
+section.language-chips {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 5px;
+	gap: 4px;
 	justify-content: center;
 	max-width: 350px;
     margin-bottom: 36px;
     margin: auto;
 }
 
-section.languages-container > button {
+section > .chip {
 	border: none;
-	padding: 4.5px;
+	padding: 5px;
 	border-radius: 4px;
 	margin: 2px;
-    font-size: 1.2em;
+    font-size: 1em;
+    font-weight: 100;
 }
 
 section.letters-container {
@@ -98,10 +99,21 @@ section.keyboard {
 section.keyboard > button {
     height: 35px;
     width: 35px;
-    background-color: #FCBA29;
     border: 1px solid #D7D7D7;
     border-radius: 3px;
     cursor: pointer;
+}
+
+.base-color-letter{
+    background-color: #FCBA29;
+}
+
+.found-letter{
+    background-color: green;
+}
+
+.not-found-letter{
+    background-color: red;
 }
 
 button.new-game-btn {
@@ -118,3 +130,5 @@ button.new-game-btn {
     font-size: 1.2em;
 
 }
+
+

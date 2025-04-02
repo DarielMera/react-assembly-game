@@ -1,41 +1,50 @@
-import { useState } from "react"
-import Language from "./components/Language"
-import AlphabetLetter from "./components/AlphabetLetter"
+import { useState, useEffect } from "react"
 import { languages } from "./languages"
+import clsx from "clsx"
 
 function AssemblyEndgame() {
 	const [currentWord, setCurrentWord] = useState("react")
 	const [guessedLetters, setGuessedLetters] = useState([])
-
-	function addGuessedLetter(pressedLetter){
-		setGuessedLetters((prevGuessLetter) => 
-		prevGuessLetter.includes(pressedLetter) ? prevGuessLetter :	[...prevGuessLetter, pressedLetter]
-	)
-	}
-
-console.log(guessedLetters);
+	console.log(guessedLetters);
 
 	const alphabet = "abcdefghijklmnopqrstuvwxyz"
-	const keyboardElements = alphabet.toUpperCase().split("").map((letter, index)=>{
-		return <AlphabetLetter key={letter} letter={letter} addGuessedLetter={addGuessedLetter}/>
+
+	const addGuessedLetter = letter => {
+		setGuessedLetters(prevLetters =>
+			prevLetters.includes(letter) ? prevLetters : [...prevLetters, letter]
+		)
+	}
+
+
+	const languageElements = languages.map(language => {
+		const styles = {
+			backgroundColor: language.backgroundColor,
+			color: language.color
+		}
+		return (
+			<span
+				className="chip"
+				key={language.name}
+				style={styles}
+			>
+				{language.name}
+			</span>
+		)
 	})
 
-	const letterElements = currentWord
-		.toLocaleUpperCase()
-		.split("")
-		.map((letter, index) => {
-			return <span key={index}>{letter}</span>
-		})
+	const letterElements = currentWord.split("").map((letter, index) => {
+		return <span key={index}>{letter.toLocaleUpperCase()}</span>
+	})
 
 
-	const languageElements = languages.map((language) => {
+	const keyboardElements = alphabet.split("").map(letter => {
 		return (
-			<Language
-				key={language.name}
-				name={language.name}
-				backgroundColor={language.backgroundColor}
-				color={language.color}
-			/>
+			<button
+				key={letter}
+				onClick={()=>addGuessedLetter(letter)}
+			>
+				{letter.toUpperCase()}
+			</button>
 		)
 	})
 
@@ -44,18 +53,16 @@ console.log(guessedLetters);
 			<header>
 				<h1 className="title">Assembly: Endgame</h1>
 				<p className="description">
-					Guess the word withing 8 attempts to keep the programming world safe from Assembly!
+					Guess the word within 8 attempts to keep the programming world safe from Assembly!
 				</p>
 			</header>
 			<section className="game-status">
 				<h2>You win!</h2>
 				<p>Well done</p>
 			</section>
-			<section className="languages-container">{languageElements} </section>
+			<section className="language-chips">{languageElements} </section>
 			<section className="letters-container">{letterElements}</section>
-			<section className="keyboard">
-				{keyboardElements}
-			</section>
+			<section className="keyboard">{keyboardElements}</section>
 			<button className="new-game-btn">New Game</button>
 		</main>
 	)
