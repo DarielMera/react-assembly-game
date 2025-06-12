@@ -1,0 +1,89 @@
+-General notes: remember to use a key for every element evertytime we use map()
+
+-import useState
+-import language not as default
+-import the clsx package
+
+- declare the main function named AssemblyEndgame
+- declare states : currentWord, the value is a string containign the current word
+- declare states : guessedLetters, the value is an empty array 
+
+challenge: keep count of wrong selections
+- declare const wrongGuessesCount it gets return a filter() applied on the guessedLetters
+- the callback filter function checks for every letter and returns the letters that are not part of the currentWord
+- the final return is the length of the new array containing the words not found on the current word
+
+- declare const alphabet; which is a string of all 26 alphabet characters
+
+challenge: check if selected letter exist on the addGuessedLetter array; if not found then add to array
+- declare function addGuessedLetter
+- takes in letter as parameter
+- use the guessedLetters update funciton setGuessedLetters which takes in the prevLetters
+- use includes() on prevLetters array; pass in the letter 
+- if evaluates to true then return prevLetters 
+- otherwise return new array with prevLetters and new letter
+
+
+challenge: map through the provided data (array) and use property to populate <span>
+
+- delare const languageElements 
+- map languages
+- pass language as parameter and index
+- declare const isLanguageLost which check if the index is less than wrongGuessesCount
+	this will return true or false and will be used to conditionally render appropiate css 
+
+- declare const styles object. use backgroundColor and color ; use values from languages data
+
+		const className = clsx("chip", isLanguageLost && "lost")
+- declare const className, use the clsx function and pass the base default class "chip", 
+	then use short circuit to check for isLanguageLost and return "lost" class if true
+		
+- return jsx for the languageElements	
+-return a span element equipped with className, key, style, and the innerText is the name property of the language array
+
+challenge: use every letter of the currentWord to check if any of the letter matches the element of the guessedLetters array
+			if it does then return the guessedLetter that matches otherwise an empty array
+Note: the reason why the background square are populated is because initially (on the initial rendering) depending on the lenght of the current word it will for every letter but since there is nothing yet because i have not preseed any button it will still populate the span elements with the indeicated css styles
+
+- declare const letterElements
+- map over currentWord and use split("") to convert to array
+- use map() to iterate over the array and pass the letter parameter and the index
+- return jsx - return a span equipped with key, use index as value, 
+- the for innerText use conditional operator check if guessedLetters includes the letter 
+	if it does then return the letter toUpperCase othewise return an empty string
+
+
+challenge: convert alphabet string to array using split() then map over and pass letter parameter 
+
+- declare const keyboardElements and convert string and map over array 
+- declare const isGuessed : checks for the letter to see if it is included in the guessedLetters array return t / f
+- declare const isCorrect : use the answer from isGuessed and also check if the letter is included in the currentWord return t / f
+- declare const isWrong : the logic statement is the negation of isCorrect. t / f will be inverted. the result of isGuessed and the check for the letters that are not on the currentWord
+
+- declare const className and use clsx() passs in an object 2 properties correct and wrong. use the previous result from is correct and isWrong
+note: when using an object as the clsx function parameter the properties names are the css class name and will be applied depending on the evaluation of the value. if true then apply it
+
+- return jsx
+- return a button equipped with the conditional className
+- use the letter as the key
+- onClick event as a property which value is a function that calls the addGuessedLetter funciton and passes the letter as argument
+-finally the inner text is the letter but in uppercase()
+
+
+-MAIN JSX OF THE AssemblyEndgame COMPONENT IS RETURN HERE
+main.main-container
+	header
+		h1.title {Assembly: Endgame}
+		p.description {Guess the word within 8 attempts to keep the programming world safe from Assembly!}
+
+
+	section.game-status
+		h2 {you win!}
+		p {well done}
+
+	section.language-chips {{languageElements}}
+	section.letters-container {{letterElements}}
+	section.keyboard {{keyboardElements}}
+	button.new-game-btn {New Game}
+
+- export AssemblyEndgame as default 
